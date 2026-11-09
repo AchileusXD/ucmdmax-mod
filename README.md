@@ -22,7 +22,7 @@ direkt im Spiel in unser Akti-Sheet eintragen, statt dafür aus dem Spiel raus z
 
 | Befehl | Wofür |
 |---|---|
-| `/ucmdmax newakti` | Akti eintragen |
+| `/ucmdmax newakti` oder Taste `K` | Akti eintragen (Taste änderbar unter Optionen > Steuerung) |
 | `/ucmdmax verbinden <Code>` | einmal verbinden (den Code gibt es in Discord mit `/modverbinden`) |
 | `/ucmdmax status` | zeigt, ob die Verbindung steht |
 | `/ucmdmax trennen` | Verbindung lösen |

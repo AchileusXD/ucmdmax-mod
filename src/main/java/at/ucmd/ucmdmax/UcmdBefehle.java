@@ -53,7 +53,7 @@ public final class UcmdBefehle {
 
 	private static int hilfe() {
 		UcmdMax.chat(Component.literal("UCMD Max " + UcmdMax.version() + " - Befehle:").withStyle(ChatFormatting.GOLD));
-		zeile("/ucmdmax newakti", "Akti in dein Akti-Blatt eintragen");
+		zeile("/ucmdmax newakti", "Akti in dein Akti-Blatt eintragen (oder Taste K)");
 		zeile("/ucmdmax verbinden <Code>", "mit Discord verbinden (Code: /modverbinden in Discord)");
 		zeile("/ucmdmax status", "Verbindung prüfen");
 		zeile("/ucmdmax trennen", "Verbindung lösen");
@@ -74,7 +74,8 @@ public final class UcmdBefehle {
 				.append(Component.literal("/ucmdmax verbinden <Code>").withStyle(ChatFormatting.YELLOW)));
 	}
 
-	private static int newakti() {
+	/** Oeffnet das Akti-Fenster - ueber /ucmdmax newakti oder die Taste (siehe UcmdMax). */
+	static int newakti() {
 		if (!UcmdMax.konfig().verbunden()) {
 			nichtVerbunden();
 			return 0;
