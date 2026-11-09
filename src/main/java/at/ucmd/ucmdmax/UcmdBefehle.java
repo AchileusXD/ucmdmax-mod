@@ -106,11 +106,21 @@ public final class UcmdBefehle {
 
 	private static int status() {
 		UcmdMax.chat(Component.literal("Bot-Adresse: " + UcmdMax.konfig().apiUrl()).withStyle(ChatFormatting.GRAY));
-		if (!UcmdMax.konfig().verbunden()) {
-			nichtVerbunden();
-			return 0;
-		}
 		BotApi api = UcmdMax.api();
+		// Erst schauen, ob der Bot ueberhaupt antwortet, dann die Verbindung pruefen
+		api.danach(api.erreichbar(), ms -> {
+			UcmdMax.chat(Component.literal("✔ Bot erreichbar").withStyle(ChatFormatting.GREEN)
+					.append(Component.literal(" (" + ms + " ms)").withStyle(ChatFormatting.GRAY)));
+			if (UcmdMax.konfig().verbunden()) {
+				verbindungAnzeigen(api);
+			} else {
+				nichtVerbunden();
+			}
+		}, fehler -> UcmdMax.chatFehler(fehler.getMessage()));
+		return 1;
+	}
+
+	private static void verbindungAnzeigen(BotApi api) {
 		api.danach(api.ich(), antwort -> {
 			String mc = BotApi.text(antwort, "mc_name", null);
 			UcmdMax.chat(Component.literal("✔ Verbunden mit Discord: ").withStyle(ChatFormatting.GREEN)
@@ -124,7 +134,6 @@ public final class UcmdBefehle {
 				UcmdMax.chatFehler("Kein Akti-Blatt gefunden, das genau wie dein Discord-Nickname heißt.");
 			}
 		}, fehler -> UcmdMax.chatFehler(fehler.getMessage()));
-		return 1;
 	}
 
 	private static int trennen() {

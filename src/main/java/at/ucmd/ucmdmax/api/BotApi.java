@@ -53,6 +53,13 @@ public final class BotApi {
 		return senden("POST", "/api/v1/verbinden", body, false);
 	}
 
+	/** Fragt /api/v1/status ab (braucht keinen Token) und liefert die Antwortzeit in Millisekunden. */
+	public CompletableFuture<Long> erreichbar() {
+		long start = System.nanoTime();
+		return senden("GET", "/api/v1/status", null, false)
+				.thenApply(json -> (System.nanoTime() - start) / 1_000_000);
+	}
+
 	public CompletableFuture<JsonObject> ich() {
 		return senden("GET", "/api/v1/ich", null, true);
 	}

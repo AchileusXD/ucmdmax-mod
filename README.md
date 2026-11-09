@@ -24,14 +24,14 @@ direkt im Spiel in unser Akti-Sheet eintragen, statt dafür aus dem Spiel raus z
 |---|---|
 | `/ucmdmax newakti` oder Taste `K` | Akti eintragen (Taste änderbar unter Optionen > Steuerung) |
 | `/ucmdmax verbinden <Code>` | einmal verbinden (den Code gibt es in Discord mit `/modverbinden`) |
-| `/ucmdmax status` | zeigt, ob die Verbindung steht |
+| `/ucmdmax status` | zeigt, ob der Server erreichbar ist und ob die Verbindung steht |
 | `/ucmdmax trennen` | Verbindung lösen |
 | `/ucmdmax server [Adresse]` | Server-Adresse anzeigen oder ändern |
 
 ## Installation
 
 1. Fabric Loader für Minecraft 26.2 und Fabric API installieren.
-2. `ucmdmax-1.0.0.jar` in den `mods`-Ordner legen.
+2. Die Jar-Datei (`ucmdmax-<Version>.jar`) in den `mods`-Ordner legen.
 
 ## Selbst bauen
 
@@ -39,7 +39,7 @@ direkt im Spiel in unser Akti-Sheet eintragen, statt dafür aus dem Spiel raus z
 gradlew build
 ```
 
-Die Mod liegt dann in `build/libs/ucmdmax-1.0.0.jar`. Gradle braucht Java 25 und lädt es bei Bedarf
+Die Mod liegt dann in `build/libs/` (z. B. `ucmdmax-1.3.0.jar`). Gradle braucht Java 25 und lädt es bei Bedarf
 selbst herunter.
 
 ## Aufbau
