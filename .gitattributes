@@ -1,0 +1,9 @@
+# Zeilenenden einheitlich halten (Windows <-> Linux-Server)
+* text=auto
+# Shell-Skripte brauchen auf Linux/Mac LF, Windows-Skripte CRLF
+gradlew text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+# Binaerdateien nie anfassen
+*.jar binary
+*.png binary
