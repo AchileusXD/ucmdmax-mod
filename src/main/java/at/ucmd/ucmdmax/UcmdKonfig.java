@@ -33,6 +33,7 @@ public final class UcmdKonfig {
 	// Werden von Gson gelesen und geschrieben
 	private String apiUrl = STANDARD_URL;
 	private String token = "";
+	private String letzteKategorie = "";
 
 	public static UcmdKonfig laden() {
 		if (Files.exists(DATEI)) {
@@ -44,6 +45,9 @@ public final class UcmdKonfig {
 					}
 					if (konfig.token == null) {
 						konfig.token = "";
+					}
+					if (konfig.letzteKategorie == null) {
+						konfig.letzteKategorie = "";
 					}
 					return konfig;
 				}
@@ -81,6 +85,18 @@ public final class UcmdKonfig {
 
 	public synchronized boolean verbunden() {
 		return !token.isBlank();
+	}
+
+	/** Key der zuletzt gewaehlten Akti-Kategorie (z.B. "roleplay"), leer = noch keine. */
+	public synchronized String letzteKategorie() {
+		return letzteKategorie;
+	}
+
+	public synchronized void setLetzteKategorie(String kategorie) {
+		if (kategorie != null && !kategorie.equals(letzteKategorie)) {
+			letzteKategorie = kategorie;
+			speichern();
+		}
 	}
 
 	public synchronized void setToken(String neuerToken) {
